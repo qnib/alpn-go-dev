@@ -10,7 +10,7 @@ RUN apk upgrade --update \
  && /usr/glibc/usr/bin/ldconfig /lib /usr/glibc/usr/lib \
  && rm -rf /var/cache/apk/*
 RUN go get cmd/cover
-ENV ZMQ_VER=4.1.1 \
+ENV ZMQ_VER=4.1.4 \
     CZMQ_VER=3.0.1 \
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/
 RUN apk add --update gcc g++ make libffi-dev openssl-dev
@@ -21,15 +21,13 @@ RUN mkdir -p /opt/ \
  && cd /opt/libsodium-${SODIUM_VER} \
  && ./configure --prefix=/usr/local/ \
  && make check \
- && make install
-ENV ZMQ_VER=4.1.4 
-RUN mkdir -p /opt/ \
+ && make install \
  && wget -qO - http://download.zeromq.org/zeromq-${ZMQ_VER}.tar.gz |tar xfz - -C /opt/ \
  && cd /opt/zeromq-${ZMQ_VER} \
  && ./configure --with-libsodium \
  && make \
- && make install
-RUN wget -qO - http://download.zeromq.org/czmq-${CZMQ_VER}.tar.gz | tar xfz - -C /opt/ \
+ && make install \
+ && wget -qO - http://download.zeromq.org/czmq-${CZMQ_VER}.tar.gz | tar xfz - -C /opt/ \
  && cd /opt/czmq-${CZMQ_VER} \
  && ./configure \
  && make -j2 \
