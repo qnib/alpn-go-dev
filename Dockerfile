@@ -1,4 +1,4 @@
-FROM qnib/alpn-base:edge
+FROM qnib/alpn-base
 
 ENV GOPATH=/usr/local/
 RUN apk upgrade --update \
