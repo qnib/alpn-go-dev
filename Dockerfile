@@ -49,6 +49,8 @@ RUN for x in docker/docker Sirupsen/logrus Azure/azure BurntSushi/toml \
              stevvooe/resumable syndtr/gocapability urfave/cli vishvananda/netlink \
              vishvananda/netns xenolf/lego ;do git clone https://github.com/${x} ${GOPATH}/src/github.com/${x};done
              #yvasiyarov/go yvasiyarov/gorelic  yvasiyarov/newrelic
-RUN go get golang.org/x/net/context cmd/cover github.com/mattn/gom
+RUN go get golang.org/x/net/context cmd/cover github.com/mattn/gom github.com/stretchr/testify/assert github.com/pkg/errors
 RUN git clone https://github.com/davecheney/profile.git ${GOPATH}/src/github.com/davecheney/profile \
  && git -C ${GOPATH}/src/github.com/davecheney/profile checkout v0.1.0-rc.1
+RUN git clone  https://github.com/docker/engine-api ${GOPATH}/src/github.com/docker/engine-api \
+ && git -C ${GOPATH}/src/github.com/docker/engine-api checkout release/1.12
