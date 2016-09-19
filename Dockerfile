@@ -36,18 +36,18 @@ RUN apk --no-cache add curl ca-certificates bash git go make python py-configobj
  && rm -rf /opt/zeromq* /opt/czmq*
 RUN echo http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories \
   && apk --no-cache add gnuplot
-RUN for x in docker/docker Sirupsen/logrus Azure/azure BurntSushi/toml \
-             Sirupsen/logrus armon/go aws/aws bugsnag/bugsnag bugsnag/osext \
-             bugsnag/panicwrap codegangsta/cli coreos/go denverdino/aliyungo \
-             docker/distribution docker/docker docker/go docker/goamz docker/libkv \
+RUN for x in docker/docker docker/go-connections docker/go-units Sirupsen/logrus\
+             BurntSushi/toml bugsnag/osext \
+             bugsnag/panicwrap codegangsta/cli denverdino/aliyungo \
+             docker/distribution docker/go docker/goamz docker/libkv \
              docker/libnetwork docker/libtrust garyburd/redigo godbus/dbus \
              golang/protobuf gorilla/context gorilla/handlers gorilla/mux \
              hashicorp/memberlist inconshreveable/mousetrap influxdata/influxdb \
-             jmespath/go kr/pty mattn/go microsoft/hcsshim mistifyio/go \
+             kr/pty mattn/go microsoft/hcsshim mistifyio/gozfs \
              mitchellh/mapstructure natefinch/npipe ncw/swift opencontainers/runc \
-             opencontainers/runtime pquerna/ffjson qnib/qcollect seccomp/libseccomp \
+             pebbe/zmq4 pquerna/ffjson qnib/qcollect seccomp/libseccomp \
              stevvooe/resumable syndtr/gocapability urfave/cli vishvananda/netlink \
-             vishvananda/netns xenolf/lego ;do git clone https://github.com/${x} ${GOPATH}/src/github.com/${x};done
+             vishvananda/netns xenolf/lego ;do echo "# ${x}"; if [ "X${x}" != "X" ];then git clone https://github.com/${x} ${GOPATH}/src/github.com/${x}; fi ;done
              #yvasiyarov/go yvasiyarov/gorelic  yvasiyarov/newrelic
 RUN go get golang.org/x/net/context cmd/cover github.com/mattn/gom github.com/stretchr/testify/assert github.com/pkg/errors
 RUN git clone https://github.com/davecheney/profile.git ${GOPATH}/src/github.com/davecheney/profile \
