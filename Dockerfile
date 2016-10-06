@@ -1,4 +1,4 @@
-FROM qnib/alpn-base
+FROM qnib/alpn-base:edge
 
 ENV GOPATH=/usr/local \
     LD_LIBRARY_PATH=/usr/local/lib \
@@ -49,7 +49,7 @@ RUN for x in docker/docker docker/go-connections docker/go-units Sirupsen/logrus
              stevvooe/resumable syndtr/gocapability urfave/cli vishvananda/netlink \
              vishvananda/netns xenolf/lego ;do echo "# ${x}"; if [ "X${x}" != "X" ];then git clone https://github.com/${x} ${GOPATH}/src/github.com/${x}; fi ;done
              #yvasiyarov/go yvasiyarov/gorelic  yvasiyarov/newrelic
-RUN go get golang.org/x/net/context cmd/cover github.com/mattn/gom github.com/stretchr/testify/assert github.com/pkg/errors
+RUN go get golang.org/x/net/context github.com/stretchr/testify/assert github.com/pkg/errors
 RUN git clone https://github.com/davecheney/profile.git ${GOPATH}/src/github.com/davecheney/profile \
  && git -C ${GOPATH}/src/github.com/davecheney/profile checkout v0.1.0-rc.1
 RUN git clone  https://github.com/docker/engine-api ${GOPATH}/src/github.com/docker/engine-api \
