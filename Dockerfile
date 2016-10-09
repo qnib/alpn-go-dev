@@ -9,7 +9,7 @@ ARG SODIUM_VER=1.0.11
 ARG GLIBC_VER=2.23-r3
 
 # do all in one step
-RUN apk --no-cache add curl ca-certificates bash git go make python py-configobj py-mock libtool automake autoconf g++ make libffi-dev openssl-dev openssl mercurial \
+RUN apk --no-cache add bc curl ca-certificates bash git go make python py-configobj py-mock libtool automake autoconf g++ make libffi-dev openssl-dev openssl mercurial \
  && curl -sLo /tmp/glibc.apk "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VER}/glibc-${GLIBC_VER}.apk" \
  && apk add --allow-untrusted /tmp/glibc.apk \
  && curl -sLo /tmp/glibc-bin.apk "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VER}/glibc-bin-${GLIBC_VER}.apk" \
