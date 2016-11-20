@@ -54,3 +54,4 @@ RUN git clone https://github.com/davecheney/profile.git ${GOPATH}/src/github.com
  && git -C ${GOPATH}/src/github.com/davecheney/profile checkout v0.1.0-rc.1
 RUN git clone  https://github.com/docker/engine-api ${GOPATH}/src/github.com/docker/engine-api \
  && git -C ${GOPATH}/src/github.com/docker/engine-api checkout release/1.12
+RUN go get -u github.com/kardianos/govendor
