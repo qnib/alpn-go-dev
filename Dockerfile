@@ -34,7 +34,7 @@ RUN apk --no-cache add bc curl ca-certificates bash git go make python py-config
  && make install \
  && cd \
  && rm -rf /opt/zeromq* /opt/czmq*
-RUN echo http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories \
+RUN echo http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories \
   && apk --no-cache add gnuplot
 RUN for x in docker/docker docker/go-connections docker/go-units Sirupsen/logrus\
              BurntSushi/toml bugsnag/osext \
@@ -54,3 +54,5 @@ RUN git clone https://github.com/davecheney/profile.git ${GOPATH}/src/github.com
  && git -C ${GOPATH}/src/github.com/davecheney/profile checkout v0.1.0-rc.1
 RUN git clone  https://github.com/docker/engine-api ${GOPATH}/src/github.com/docker/engine-api \
  && git -C ${GOPATH}/src/github.com/docker/engine-api checkout release/1.12
+RUN go get -d github.com/prometheus/client_model/go
+RUN go get github.com/qnib/prom2json
