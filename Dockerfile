@@ -57,3 +57,4 @@ RUN git clone  https://github.com/docker/engine-api ${GOPATH}/src/github.com/doc
 RUN go get -d github.com/prometheus/client_model/go \ 
  && go get github.com/qnib/prom2json \
  && go get -u github.com/kardianos/govendor
+RUN go get github.com/axw/gocov/gocov
